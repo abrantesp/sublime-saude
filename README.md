@@ -29,8 +29,8 @@ O projeto usa somente HTML, CSS e JavaScript, sem bibliotecas ou serviços exter
 |   |-- css/style.css
 |   |-- js/app.js
 |   `-- images/
-|       |-- site-desktop.png
-|       `-- site-mobile.png
+|       |-- img-desktop.jpeg
+|       `-- img-mobile.jpeg
 |-- README.md
 `-- Termo de Abertura.pdf
 ```
@@ -41,11 +41,11 @@ O CSS compartilhado concentra cores, componentes e regras responsivas. O JavaScr
 
 ### Desktop
 
-![Página inicial do Sublime Saúde em desktop](assets/images/site-desktop.png)
+![Página inicial do Sublime Saúde em desktop](assets/images/img-desktop.jpeg)
 
 ### Mobile
 
-![Página inicial do Sublime Saúde em celular](assets/images/site-mobile.png)
+![Página inicial do Sublime Saúde em celular](assets/images/img-mobile.jpeg)
 
 ## Como executar
 
