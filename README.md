@@ -6,14 +6,6 @@ O Sublime Saúde é um projeto escolar de desenvolvimento web, criado por estuda
 
 O site é um protótipo educativo, não uma plataforma de atendimento. As especialidades, unidades, datas e horários são exemplos. O formulário apresenta uma confirmação apenas na tela: não envia dados, não reserva consultas e não substitui orientação de profissionais de saúde.
 
-## Autores
-
-- Ana Quézia Costa de Araújo
-- Pamela Patrícia Araújo Ciríaco da Cruz
-- Lorena Camille Câmara Silva
-- Maria Eduarda Abrantes Pereira
-- Rwan Mathews Souza Ferreira da Silva
-
 ## Páginas
 
 - `index.html`: início e apresentação do projeto.
@@ -35,12 +27,25 @@ O projeto usa somente HTML, CSS e JavaScript, sem bibliotecas ou serviços exter
 |-- agendar-consulta.html
 |-- assets/
 |   |-- css/style.css
-|   `-- js/app.js
+|   |-- js/app.js
+|   `-- images/
+|       |-- site-desktop.png
+|       `-- site-mobile.png
 |-- README.md
 `-- Termo de Abertura.pdf
 ```
 
 O CSS compartilhado concentra cores, componentes e regras responsivas. O JavaScript compartilhado controla o menu para celular, os recursos de acessibilidade e a validação do formulário.
+
+## Capturas de tela
+
+### Desktop
+
+![Página inicial do Sublime Saúde em desktop](assets/images/site-desktop.png)
+
+### Mobile
+
+![Página inicial do Sublime Saúde em celular](assets/images/site-mobile.png)
 
 ## Como executar
 
@@ -60,3 +65,11 @@ A leitura em voz alta complementa, mas não substitui, leitores de tela. Pessoas
 ## Limites e próximos passos
 
 Não há servidor, cadastro, banco de dados, autenticação ou envio de informações. O protótipo não deve receber dados pessoais ou dados de saúde. Uma futura integração real precisaria de validação com os serviços de saúde envolvidos, segurança, controle de acesso e tratamento adequado de dados pessoais.
+
+## Autores
+
+- Ana Quézia Costa de Araújo
+- Pamela Patrícia Araújo Ciríaco da Cruz
+- Lorena Camille Câmara Silva
+- Maria Eduarda Abrantes Pereira
+- Rwan Mathews Souza Ferreira da Silva
