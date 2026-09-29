@@ -6,6 +6,14 @@ O Sublime Saúde é um projeto escolar de desenvolvimento web, criado por estuda
 
 O site é um protótipo educativo, não uma plataforma de atendimento. As especialidades, unidades, datas e horários são exemplos. O formulário apresenta uma confirmação apenas na tela: não envia dados, não reserva consultas e não substitui orientação de profissionais de saúde.
 
+## Autores
+
+- Ana Quézia Costa de Araújo
+- Pamela Patrícia Araújo Ciríaco da Cruz
+- Lorena Camille Câmara Silva
+- Maria Eduarda Abrantes Pereira
+- Rwan Mathews Souza Ferreira da Silva
+
 ## Páginas
 
 - `index.html`: início e apresentação do projeto.
