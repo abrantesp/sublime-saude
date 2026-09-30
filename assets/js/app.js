@@ -6,6 +6,7 @@
     const closeMenu = () => {
       menuButton.setAttribute("aria-expanded", "false");
       menuButton.setAttribute("aria-label", "Abrir menu");
+      menuButton.textContent = "Menu";
       navigation.classList.remove("is-open");
     };
 
@@ -13,6 +14,7 @@
       const isOpen = menuButton.getAttribute("aria-expanded") === "true";
       menuButton.setAttribute("aria-expanded", String(!isOpen));
       menuButton.setAttribute("aria-label", isOpen ? "Abrir menu" : "Fechar menu");
+      menuButton.textContent = isOpen ? "Menu" : "Fechar menu";
       navigation.classList.toggle("is-open", !isOpen);
     });
 
@@ -72,7 +74,7 @@
     button.addEventListener("click", () => {
       const enabled = document.body.classList.toggle("text-large");
       button.setAttribute("aria-pressed", String(enabled));
-      button.textContent = enabled ? "Texto padrao" : "Aumentar texto";
+      button.textContent = enabled ? "Texto padrão" : "Aumentar texto";
       announce(enabled ? "Texto ampliado." : "Tamanho de texto padrão restaurado.");
     });
   });
@@ -81,7 +83,7 @@
     button.addEventListener("click", () => {
       const enabled = document.body.classList.toggle("high-contrast");
       button.setAttribute("aria-pressed", String(enabled));
-      button.textContent = enabled ? "Contraste padrao" : "Alto contraste";
+      button.textContent = enabled ? "Contraste padrão" : "Alto contraste";
       announce(enabled ? "Alto contraste ativado." : "Contraste padrao restaurado.");
     });
   });
@@ -131,7 +133,7 @@
     const details = [
       `${chosenModality} - ${formData.get("especialidade")}`,
       chosenUnit ? chosenUnit : "",
-      `${chosenDate} as ${formData.get("horario")}`
+      `${chosenDate} às ${formData.get("horario")}`
     ].filter(Boolean);
 
     summary.textContent = `${details.join(" | ")}. Esta é apenas uma simulação; nenhum atendimento foi marcado.`;
