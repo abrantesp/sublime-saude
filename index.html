@@ -10,24 +10,26 @@
 </head>
 <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <div class="accessibility-bar" role="region" aria-label="Recursos de acessibilidade">
-        <div class="accessibility-inner">
-            <span class="accessibility-label">Acessibilidade</span>
-            <button class="utility-button" type="button" data-action="speak">Ouvir página</button>
-            <button class="utility-button" type="button" data-action="stop-speaking">Parar leitura</button>
-            <button class="utility-button" type="button" data-action="text-size" aria-pressed="false">Aumentar texto</button>
-            <button class="utility-button" type="button" data-action="contrast" aria-pressed="false">Alto contraste</button>
-            <span class="sr-only" data-accessibility-status role="status" aria-live="polite"></span>
-        </div>
-    </div>
     <header class="site-header">
         <a class="brand" href="index.html" aria-label="Sublime Saúde, início">Sublime <strong>Saúde</strong></a>
+        <div class="accessibility-widget" data-accessibility-widget>
+            <button class="accessibility-toggle" type="button" aria-label="Abrir opções de acessibilidade" aria-expanded="false" aria-controls="painel-acessibilidade" data-accessibility-toggle><span aria-hidden="true">♿︎</span></button>
+            <section class="accessibility-panel" id="painel-acessibilidade" aria-label="Opções de acessibilidade" data-accessibility-panel hidden>
+                <h2>Opções de acessibilidade</h2>
+                <button class="utility-button" type="button" data-action="speak">Ouvir página</button>
+                <button class="utility-button" type="button" data-action="stop-speaking">Parar leitura</button>
+                <button class="utility-button" type="button" data-action="text-size" aria-pressed="false">Aumentar texto</button>
+                <button class="utility-button" type="button" data-action="contrast" aria-pressed="false">Alto contraste</button>
+            </section>
+            <span class="sr-only" data-accessibility-status role="status" aria-live="polite"></span>
+        </div>
         <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navegacao-principal" data-menu-toggle>Menu</button>
         <nav class="site-nav" id="navegacao-principal" aria-label="Navegacao principal" data-site-nav>
             <a href="index.html" aria-current="page">Início</a>
             <a href="especialidades.html">Especialidades</a>
             <a href="como-funciona.html">Como funciona</a>
             <a href="sobre-nos.html">Sobre nós</a>
+            <a href="minhas-consultas.html">Minhas consultas</a>
             <a class="nav-cta" href="agendar-consulta.html">Agendar consulta</a>
         </nav>
     </header>

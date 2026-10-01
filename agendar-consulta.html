@@ -10,13 +10,18 @@
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <div class="accessibility-bar" role="region" aria-label="Recursos de acessibilidade"><div class="accessibility-inner">
-    <span class="accessibility-label">Acessibilidade</span><button class="utility-button" type="button" data-action="speak">Ouvir página</button><button class="utility-button" type="button" data-action="stop-speaking">Parar leitura</button><button class="utility-button" type="button" data-action="text-size" aria-pressed="false">Aumentar texto</button><button class="utility-button" type="button" data-action="contrast" aria-pressed="false">Alto contraste</button><span class="sr-only" data-accessibility-status role="status" aria-live="polite"></span>
-  </div></div>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Sublime Saúde, início">Sublime <strong>Saúde</strong></a>
+    <div class="accessibility-widget" data-accessibility-widget>
+      <button class="accessibility-toggle" type="button" aria-label="Abrir opções de acessibilidade" aria-expanded="false" aria-controls="painel-acessibilidade" data-accessibility-toggle><span aria-hidden="true">♿︎</span></button>
+      <section class="accessibility-panel" id="painel-acessibilidade" aria-label="Opções de acessibilidade" data-accessibility-panel hidden>
+        <h2>Opções de acessibilidade</h2>
+        <button class="utility-button" type="button" data-action="speak">Ouvir página</button><button class="utility-button" type="button" data-action="stop-speaking">Parar leitura</button><button class="utility-button" type="button" data-action="text-size" aria-pressed="false">Aumentar texto</button><button class="utility-button" type="button" data-action="contrast" aria-pressed="false">Alto contraste</button>
+      </section>
+      <span class="sr-only" data-accessibility-status role="status" aria-live="polite"></span>
+    </div>
     <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navegacao-principal" data-menu-toggle>Menu</button>
-    <nav class="site-nav" id="navegacao-principal" aria-label="Navegação principal" data-site-nav><a href="index.html">Início</a><a href="especialidades.html">Especialidades</a><a href="como-funciona.html">Como funciona</a><a href="sobre-nos.html">Sobre nós</a><a class="nav-cta" href="agendar-consulta.html" aria-current="page">Agendar consulta</a></nav>
+    <nav class="site-nav" id="navegacao-principal" aria-label="Navegação principal" data-site-nav><a href="index.html">Início</a><a href="especialidades.html">Especialidades</a><a href="como-funciona.html">Como funciona</a><a href="sobre-nos.html">Sobre nós</a><a href="minhas-consultas.html">Minhas consultas</a><a class="nav-cta" href="agendar-consulta.html" aria-current="page">Agendar consulta</a></nav>
   </header>
   <main id="conteudo" class="page-main booking-main">
     <header class="page-heading"><p class="eyebrow">Demonstração interativa</p><h1>Vamos escolher um atendimento?</h1><p>Preencha as preferências abaixo para ver um resumo. Nenhum dado é enviado e nenhum horário real é reservado.</p></header>
@@ -26,12 +31,12 @@
         <div class="form-field"><label for="especialidade">2. Especialidade</label><select id="especialidade" name="especialidade" required><option value="">Selecione uma especialidade</option><option>Clínica geral</option><option>Cardiologia</option><option>Pediatria</option><option>Dermatologia</option><option>Psicologia</option><option>Oftalmologia</option></select></div>
         <div class="form-field" id="unit-field" hidden><label for="unidade">3. Unidade de exemplo</label><select id="unidade" name="unidade"><option value="">Selecione uma unidade</option><option>Unidade Central (exemplo)</option><option>Unidade Jardim (exemplo)</option></select></div>
         <div class="form-row"><div class="form-field"><label for="data">Data desejada</label><input id="data" name="data" type="date" required></div><div class="form-field"><label for="horario">Horário</label><select id="horario" name="horario" required><option value="">Selecione</option><option>09:00</option><option>10:30</option><option>13:30</option><option>15:00</option></select></div></div>
-        <button class="button button-primary form-submit" type="submit">Revisar demonstração</button>
+        <button class="button button-primary form-submit" type="submit">Salvar agendamento</button>
         <p class="form-footnote">Não informe dados pessoais ou de saúde. Este formulário existe somente para fins escolares.</p>
       </form>
       <aside class="booking-aside"><span class="aside-index">01 / 03</span><h2>Uma etapa de cada vez</h2><p>Escolha como prefere ser atendido, informe suas preferências e revise o resumo gerado nesta página.</p><ol><li>Modalidade e especialidade</li><li>Data e horário de exemplo</li><li>Resumo sem envio de dados</li></ol><p class="aside-note">Para uma emergência, ligue para o SAMU: <a href="tel:192">192</a>.</p></aside>
     </div>
-    <section class="confirmation" id="confirmation" tabindex="-1" hidden aria-labelledby="confirmation-title" aria-live="polite"><div><h2 id="confirmation-title">Resumo demonstrativo</h2><p id="confirmation-summary"></p><p class="confirmation-note">Esta simulação não reserva consulta nem envia informações.</p></div></section>
+    <section class="confirmation" id="confirmation" tabindex="-1" hidden aria-labelledby="confirmation-title" aria-live="polite"><div><h2 id="confirmation-title">Agendamento salvo neste navegador</h2><p id="confirmation-summary"></p><p class="confirmation-note">É uma simulação local; nenhuma consulta foi reservada por um serviço de saúde. <a href="minhas-consultas.html">Ver minhas consultas</a></p></div></section>
   </main>
   <footer class="site-footer"><div class="footer-inner"><a class="brand footer-brand" href="index.html">Sublime <strong>Saúde</strong></a><p>Projeto escolar de desenvolvimento web. Conteúdo demonstrativo, sem atendimento médico real.</p><a href="sobre-nos.html#projeto">Sobre o projeto</a></div></footer>
 </body>

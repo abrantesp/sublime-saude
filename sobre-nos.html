@@ -10,18 +10,23 @@
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <div class="accessibility-bar" role="region" aria-label="Recursos de acessibilidade"><div class="accessibility-inner">
-    <span class="accessibility-label">Acessibilidade</span><button class="utility-button" type="button" data-action="speak">Ouvir página</button><button class="utility-button" type="button" data-action="stop-speaking">Parar leitura</button><button class="utility-button" type="button" data-action="text-size" aria-pressed="false">Aumentar texto</button><button class="utility-button" type="button" data-action="contrast" aria-pressed="false">Alto contraste</button><span class="sr-only" data-accessibility-status role="status" aria-live="polite"></span>
-  </div></div>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Sublime Saúde, início">Sublime <strong>Saúde</strong></a>
-    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navegacao-principal" data-menu-toggle>Menu</button>
-    <nav class="site-nav" id="navegacao-principal" aria-label="Navegação principal" data-site-nav><a href="index.html">Início</a><a href="especialidades.html">Especialidades</a><a href="como-funciona.html">Como funciona</a><a href="sobre-nos.html" aria-current="page">Sobre nós</a><a class="nav-cta" href="agendar-consulta.html">Agendar consulta</a></nav>
+      <div class="accessibility-widget" data-accessibility-widget>
+        <button class="accessibility-toggle" type="button" aria-label="Abrir opções de acessibilidade" aria-expanded="false" aria-controls="painel-acessibilidade" data-accessibility-toggle><span aria-hidden="true">♿︎</span></button>
+        <section class="accessibility-panel" id="painel-acessibilidade" aria-label="Opções de acessibilidade" data-accessibility-panel hidden>
+          <h2>Opções de acessibilidade</h2>
+          <button class="utility-button" type="button" data-action="speak">Ouvir página</button><button class="utility-button" type="button" data-action="stop-speaking">Parar leitura</button><button class="utility-button" type="button" data-action="text-size" aria-pressed="false">Aumentar texto</button><button class="utility-button" type="button" data-action="contrast" aria-pressed="false">Alto contraste</button>
+        </section>
+        <span class="sr-only" data-accessibility-status role="status" aria-live="polite"></span>
+      </div>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navegacao-principal" data-menu-toggle>Menu</button>
+      <nav class="site-nav" id="navegacao-principal" aria-label="Navegação principal" data-site-nav><a href="index.html">Início</a><a href="especialidades.html">Especialidades</a><a href="como-funciona.html">Como funciona</a><a href="sobre-nos.html" aria-current="page">Sobre nós</a><a href="minhas-consultas.html">Minhas consultas</a><a class="nav-cta" href="agendar-consulta.html">Agendar consulta</a></nav>
   </header>
   <main id="conteudo" class="page-main">
-    <header class="page-heading"><p class="eyebrow">Tecnologia com propósito</p><h1>Sobre nós</h1><p>O Sublime Saúde é um projeto de desenvolvimento web criado por estudantes do ensino médio integrado ao curso técnico em TI.</p></header>
-    <section class="about-layout" id="projeto"><div class="about-lead"><h2>Uma ideia para aproximar serviços e pessoas</h2><p>A proposta é explorar como uma interface simples pode organizar informações, apresentar especialidades e orientar um fluxo de agendamento de forma clara.</p></div><div class="about-details"><article><h3>O que estamos aprendendo</h3><p>Estrutura com HTML, apresentação responsiva com CSS e interações com JavaScript, mantendo o código fácil de estudar e evoluir.</p></article><article><h3>O que este site não é</h3><p>Não é uma unidade de saúde, não oferece orientação clínica e não realiza marcações reais. Os nomes, opções e horários são exemplos fictícios.</p></article><article id="contato"><h3>Privacidade e segurança</h3><p>O formulário de demonstração não pede nome, CPF, telefone, sintomas ou outras informações pessoais. As escolhas ficam apenas na tela e não são enviadas a nenhum serviço.</p></article></div></section>
-    <aside class="notice"><strong>Em uma versão futura</strong><p>Qualquer integração real exigiria validação com profissionais e serviços públicos de saúde, proteção de dados, autenticação e infraestrutura segura.</p></aside>
+    <header class="page-heading"><p class="eyebrow">Projeto escolar</p><h1>Sobre nós</h1><p>Uma experiência de acesso à saúde criada por estudantes do ensino médio técnico em TI.</p></header>
+    <section class="about-layout" id="projeto"><div class="about-lead"><h2>Tecnologia a serviço do acesso</h2><p>O projeto explora como HTML, CSS e JavaScript podem organizar informações de saúde de forma clara.</p></div><div class="about-details"><article><h3>O que demonstra</h3><p>Especialidades, orientações de acesso e uma simulação local de agendamento.</p></article><article><h3>Limites</h3><p>Não oferece atendimento médico nem reserva horários. Dados e unidades são fictícios.</p></article><article id="contato"><h3>Privacidade</h3><p>O formulário não solicita nem envia informações pessoais ou de saúde.</p></article></div></section>
+    <aside class="notice"><strong>Futuras integrações</strong><p>Exigiriam validação com os serviços de saúde e proteção adequada de dados.</p></aside>
     <div class="page-action"><a class="button button-primary" href="index.html">Voltar ao início</a></div>
   </main>
   <footer class="site-footer"><div class="footer-inner"><a class="brand footer-brand" href="index.html">Sublime <strong>Saúde</strong></a><p>Projeto escolar de desenvolvimento web. Conteúdo demonstrativo, sem atendimento médico real.</p><a href="sobre-nos.html#projeto">Sobre o projeto</a></div></footer>
