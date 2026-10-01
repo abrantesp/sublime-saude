@@ -10,22 +10,34 @@
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <div class="accessibility-bar" role="region" aria-label="Recursos de acessibilidade"><div class="accessibility-inner">
-    <span class="accessibility-label">Acessibilidade</span><button class="utility-button" type="button" data-action="speak">Ouvir página</button><button class="utility-button" type="button" data-action="stop-speaking">Parar leitura</button><button class="utility-button" type="button" data-action="text-size" aria-pressed="false">Aumentar texto</button><button class="utility-button" type="button" data-action="contrast" aria-pressed="false">Alto contraste</button><span class="sr-only" data-accessibility-status role="status" aria-live="polite"></span>
-  </div></div>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Sublime Saúde, início">Sublime <strong>Saúde</strong></a>
+    <div class="accessibility-widget" data-accessibility-widget>
+      <button class="accessibility-toggle" type="button" aria-label="Abrir opções de acessibilidade" aria-expanded="false" aria-controls="painel-acessibilidade" data-accessibility-toggle><span aria-hidden="true">♿︎</span></button>
+      <section class="accessibility-panel" id="painel-acessibilidade" aria-label="Opções de acessibilidade" data-accessibility-panel hidden>
+        <h2>Opções de acessibilidade</h2>
+        <button class="utility-button" type="button" data-action="speak">Ouvir página</button><button class="utility-button" type="button" data-action="stop-speaking">Parar leitura</button><button class="utility-button" type="button" data-action="text-size" aria-pressed="false">Aumentar texto</button><button class="utility-button" type="button" data-action="contrast" aria-pressed="false">Alto contraste</button>
+      </section>
+      <span class="sr-only" data-accessibility-status role="status" aria-live="polite"></span>
+    </div>
     <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navegacao-principal" data-menu-toggle>Menu</button>
-    <nav class="site-nav" id="navegacao-principal" aria-label="Navegação principal" data-site-nav><a href="index.html">Início</a><a href="especialidades.html">Especialidades</a><a href="como-funciona.html" aria-current="page">Como funciona</a><a href="sobre-nos.html">Sobre nós</a><a class="nav-cta" href="agendar-consulta.html">Agendar consulta</a></nav>
+    <nav class="site-nav" id="navegacao-principal" aria-label="Navegação principal" data-site-nav><a href="index.html">Início</a><a href="especialidades.html">Especialidades</a><a href="como-funciona.html" aria-current="page">Como funciona</a><a href="sobre-nos.html">Sobre nós</a><a href="minhas-consultas.html">Minhas consultas</a><a class="nav-cta" href="agendar-consulta.html">Agendar consulta</a></nav>
   </header>
   <main id="conteudo" class="page-main">
-    <header class="page-heading"><p class="eyebrow">Da escolha à confirmação</p><h1>Como funciona</h1><p>O fluxo foi pensado para demonstrar, passo a passo, como uma pessoa poderia encontrar uma modalidade de atendimento.</p></header>
+    <header class="page-heading"><p class="eyebrow">Três etapas</p><h1>Como funciona</h1><p>Uma simulação simples de escolha de atendimento.</p></header>
     <ol class="steps-list">
-      <li><span class="step-number">01</span><div><h2>Escolha a modalidade</h2><p>Selecione atendimento presencial ou online. A opção presencial permite escolher uma unidade de exemplo.</p></div></li>
-      <li><span class="step-number">02</span><div><h2>Informe suas preferências</h2><p>Escolha uma especialidade, uma data e um horário disponível no formulário demonstrativo.</p></div></li>
-      <li><span class="step-number">03</span><div><h2>Confira a confirmação</h2><p>A página mostra um resumo local do que foi selecionado. Nenhum dado é enviado para um servidor e nenhum horário real é reservado.</p></div></li>
+      <li><span class="step-number">01</span><div><h2>Escolha o atendimento</h2><p>Selecione presencial ou online.</p></div></li>
+      <li><span class="step-number">02</span><div><h2>Defina as opções</h2><p>Escolha especialidade, data e horário de exemplo.</p></div></li>
+      <li><span class="step-number">03</span><div><h2>Confira o resumo</h2><p>A simulação fica neste navegador e não reserva uma consulta real.</p></div></li>
     </ol>
-    <section class="accessibility-explainer" id="acessibilidade" aria-labelledby="acessibilidade-titulo"><p class="eyebrow">Acesso para mais pessoas</p><h2 id="acessibilidade-titulo">A informação aparece de mais de um jeito</h2><div class="accessibility-grid"><article><h3>Para pessoas cegas ou com baixa visão</h3><p>Use um leitor de tela do sistema ou o botão “Ouvir página”. Os controles de texto ampliado e alto contraste também ajudam na leitura visual.</p></article><article><h3>Para pessoas surdas ou com deficiência auditiva</h3><p>O site não depende de áudio para transmitir informações: instruções e confirmações aparecem por escrito. Não há vídeos ou falas sem legenda nesta demonstração.</p></article><article><h3>Para navegação por teclado</h3><p>Use Tab para avançar, Shift + Tab para voltar e Enter ou Espaço para acionar controles. O link “Pular para o conteúdo” aparece ao receber foco.</p></article></div><p class="notice"><strong>Observação:</strong> a leitura em voz alta depende do suporte de fala do navegador e do dispositivo. Ela complementa, mas não substitui, um leitor de tela.</p></section>
+    <section class="accessibility-explainer" id="acessibilidade" aria-labelledby="acessibilidade-titulo">
+      <p class="eyebrow">Acessibilidade</p><h2 id="acessibilidade-titulo">Recursos disponíveis</h2>
+      <div class="accessibility-grid">
+        <article><h3>Leitura</h3><p>O painel permite ouvir a página, ampliar o texto e ativar alto contraste. Leitores de tela do sistema também são compatíveis.</p></article>
+        <article><h3>Informação visual</h3><p>Instruções e confirmações aparecem por escrito; o site não depende de áudio ou vídeo.</p></article>
+        <article><h3>Teclado</h3><p>Use Tab para navegar e Enter ou Espaço para acionar controles.</p></article>
+      </div>
+    </section>
     <div class="page-action"><a class="button button-primary" href="agendar-consulta.html">Experimentar o fluxo</a></div>
   </main>
   <footer class="site-footer"><div class="footer-inner"><a class="brand footer-brand" href="index.html">Sublime <strong>Saúde</strong></a><p>Projeto escolar de desenvolvimento web. Conteúdo demonstrativo, sem atendimento médico real.</p><a href="sobre-nos.html#projeto">Sobre o projeto</a></div></footer>
