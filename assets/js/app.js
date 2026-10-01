@@ -1,6 +1,15 @@
 (() => {
   const menuButton = document.querySelector("[data-menu-toggle]");
   const navigation = document.querySelector("[data-site-nav]");
+  const accessibilityButton = document.querySelector("[data-accessibility-toggle]");
+  const accessibilityPanel = document.querySelector("[data-accessibility-panel]");
+
+  const closeAccessibilityPanel = () => {
+    if (!accessibilityButton || !accessibilityPanel) return;
+    accessibilityButton.setAttribute("aria-expanded", "false");
+    accessibilityButton.setAttribute("aria-label", "Abrir opções de acessibilidade");
+    accessibilityPanel.hidden = true;
+  };
 
   if (menuButton && navigation) {
     const closeMenu = () => {
@@ -12,6 +21,7 @@
 
     menuButton.addEventListener("click", () => {
       const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      if (!isOpen) closeAccessibilityPanel();
       menuButton.setAttribute("aria-expanded", String(!isOpen));
       menuButton.setAttribute("aria-label", isOpen ? "Abrir menu" : "Fechar menu");
       menuButton.textContent = isOpen ? "Menu" : "Fechar menu";
@@ -24,6 +34,29 @@
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeMenu();
+    });
+  }
+
+  if (accessibilityButton && accessibilityPanel) {
+    accessibilityButton.addEventListener("click", () => {
+      const isOpen = accessibilityButton.getAttribute("aria-expanded") === "true";
+      if (!isOpen && menuButton) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Abrir menu");
+        menuButton.textContent = "Menu";
+        navigation?.classList.remove("is-open");
+      }
+      accessibilityButton.setAttribute("aria-expanded", String(!isOpen));
+      accessibilityButton.setAttribute("aria-label", isOpen ? "Abrir opções de acessibilidade" : "Fechar opções de acessibilidade");
+      accessibilityPanel.hidden = isOpen;
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest("[data-accessibility-widget]")) closeAccessibilityPanel();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeAccessibilityPanel();
     });
   }
 
@@ -88,6 +121,113 @@
     });
   });
 
+  const appointmentStorageKey = "sublimeSaudeAppointmentsV1";
+  const consultationList = document.querySelector("[data-consultation-list]");
+
+  const readAppointments = () => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(appointmentStorageKey) || "[]");
+      return Array.isArray(saved) ? saved : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const writeAppointments = (appointments) => {
+    try {
+      localStorage.setItem(appointmentStorageKey, JSON.stringify(appointments));
+      return true;
+    } catch {
+      announce("Não foi possível salvar neste navegador. Verifique as configurações de armazenamento.");
+      return false;
+    }
+  };
+
+  const formatAppointmentDate = (date) => new Date(`${date}T12:00:00`).toLocaleDateString("pt-BR");
+
+  if (consultationList) {
+    const filterButtons = Array.from(document.querySelectorAll("[data-appointment-filter]"));
+    let activeStatus = "agendada";
+
+    const renderConsultations = () => {
+      consultationList.replaceChildren();
+      const appointments = readAppointments().filter((appointment) => appointment.status === activeStatus);
+
+      if (appointments.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.className = "consultation-empty";
+        emptyMessage.textContent = activeStatus === "agendada"
+          ? "Não há consultas agendadas neste navegador."
+          : "Não há consultas canceladas neste navegador.";
+        consultationList.append(emptyMessage);
+        return;
+      }
+
+      appointments.forEach((appointment) => {
+        const item = document.createElement("article");
+        item.className = "consultation-item";
+        item.dataset.status = appointment.status;
+
+        const details = document.createElement("div");
+        const heading = document.createElement("h2");
+        heading.textContent = appointment.specialty;
+        const modality = document.createElement("p");
+        modality.textContent = appointment.modality;
+        const dateAndTime = document.createElement("p");
+        dateAndTime.textContent = `${formatAppointmentDate(appointment.date)} às ${appointment.time}`;
+        details.append(heading, modality, dateAndTime);
+
+        if (appointment.unit) {
+          const unit = document.createElement("p");
+          unit.textContent = appointment.unit;
+          details.append(unit);
+        }
+
+        const status = document.createElement("p");
+        status.textContent = appointment.status === "agendada" ? "Status: Agendada" : "Status: Cancelada";
+        details.append(status);
+        item.append(details);
+
+        if (appointment.status === "agendada") {
+          const cancelButton = document.createElement("button");
+          cancelButton.className = "button button-secondary";
+          cancelButton.type = "button";
+          cancelButton.textContent = "Cancelar consulta";
+          cancelButton.addEventListener("click", () => {
+            const currentAppointments = readAppointments();
+            const selectedAppointment = currentAppointments.find((saved) => saved.id === appointment.id);
+            if (!selectedAppointment) return;
+            selectedAppointment.status = "cancelada";
+            selectedAppointment.cancelledAt = new Date().toISOString();
+            if (writeAppointments(currentAppointments)) {
+              renderConsultations();
+              announce("Simulação de consulta cancelada.");
+              filterButtons.find((button) => button.dataset.appointmentFilter === "agendada")?.focus();
+            }
+          });
+          item.append(cancelButton);
+        }
+
+        consultationList.append(item);
+      });
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeStatus = button.dataset.appointmentFilter;
+        filterButtons.forEach((filterButton) => {
+          filterButton.setAttribute("aria-pressed", String(filterButton === button));
+        });
+        renderConsultations();
+      });
+    });
+
+    renderConsultations();
+    window.addEventListener("storage", (event) => {
+      if (event.key === appointmentStorageKey) renderConsultations();
+    });
+  }
+
   const form = document.querySelector("#appointment-form");
   if (!form) return;
 
@@ -136,7 +276,20 @@
       `${chosenDate} às ${formData.get("horario")}`
     ].filter(Boolean);
 
-    summary.textContent = `${details.join(" | ")}. Esta é apenas uma simulação; nenhum atendimento foi marcado.`;
+    const appointments = readAppointments();
+    appointments.push({
+      id: window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      modality: chosenModality,
+      specialty: formData.get("especialidade"),
+      unit: chosenUnit,
+      date: formData.get("data"),
+      time: formData.get("horario"),
+      status: "agendada"
+    });
+
+    if (!writeAppointments(appointments)) return;
+
+    summary.textContent = `${details.join(" | ")}. Salvo neste navegador; nenhum horário real foi reservado.`;
     confirmation.hidden = false;
     confirmation.focus();
     announce("Resumo demonstrativo pronto. Nenhuma consulta foi marcada.");
